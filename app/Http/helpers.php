@@ -7,7 +7,7 @@ use App\Pelotao;
 }
 
 function mostrarDados(){
-  $showpelotaos = Pelotao::orderBy('id', 'desc')->all();
+  $showpelotaos = Pelotao::all();
   return view('layouts.menus',compact('showpelotaos'));
 }
 
@@ -28,6 +28,8 @@ function mostrarDados(){
       case 1:
         return 'admin';
         break;
+      case 0:
+        return 'user';
       default:
         return 'user';
         break;

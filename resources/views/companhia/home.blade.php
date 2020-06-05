@@ -3,11 +3,13 @@
 @section('content')
 
 <div class="container">
+  <br>
   <div class="">
     <a href="{{url('companhia/create')}}">
-      <button type="" class="btn" name="button">Cadastrar</button>
+      <button type="" class="btn btn-primary" name="button">Cadastrar Companhia</button>
     </a>
   </div>
+  <br>
 
 <table class="table table-hover">
   <thead>
@@ -15,6 +17,7 @@
       <th scope="col">Id</th>
       <th scope="col">Companhia</th>
       <th scope="col">Edital</th>
+      <th scope="col">Açoes</th>
     </tr>
   </thead>
   <tbody>

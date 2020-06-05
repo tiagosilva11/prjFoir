@@ -28,6 +28,8 @@ public function index()
       $this->objEdital->create([
         'nomeEdital'=>$request->nomeEdital
       ]);
+      return redirect('edital/home');
+
     }
 
     public function edit($id){
@@ -39,6 +41,6 @@ public function index()
         'nomeEdital'=>$request->nomeEdital
       ]);
 
-      return redirect('home');
+      return redirect('edital/home');
     }
 }

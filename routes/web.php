@@ -32,7 +32,7 @@ Route::get('/pelotao/{id}/edit', 'PelotaoController@edit')->name('edit');
 Route::get('/aluno/home', 'AlunoController@index')->name('home');
 Route::get('/aluno/create', 'AlunoController@create')->name('create');
 Route::get('/aluno/{id}/edit', 'AlunoController@edit')->name('edit');
-Route::get('/aluno/{id}/retornaId', 'AlunoController@retornaId')->name('edit');
+Route::get('/aluno/{id}/retornaId', 'AlunoController@retornaId')->name('home');
 
 Route::get('/observacao/{id}/edit', 'ObservacaoController@edit')->name('edit');
 Route::get('/observacao/create', 'ObservacaoController@create')->name('create');
@@ -49,8 +49,6 @@ Route::resource('editals', 'EditalController')->middleware('auth');
 Route::resource('pelotaos', 'PelotaoController')->middleware('auth');
 Route::resource('alunos', 'AlunoController')->middleware('auth');
 Route::resource('observacaos', 'ObservacaoController')->middleware('auth');
-
-Auth::routes();
 
 Route::group(['middleware'=>'auth'], function () {
 	Route::get('permissions-all-users',['middleware'=>'check-permission:user|admin|superadmin','uses'=>'HomeController@allUsers']);

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @extends('layouts.menus')
 @section('content')
+
 <div class="container">
   <div class="col-md">
     <form class="" name="formCad" id="formCada" action="{{url('alunos')}}" method="POST" enctype="multipart/form-data">
@@ -8,6 +9,10 @@
       <div class="form-group">
         <label for="name">Nome aluno</label>
         <input type="text" name="nome" id="nome" value="" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Numero</label>
+        <input type="text" name="numero_aluno" id="nomeDeGuerra" value="" required>
       </div>
       <div class="form-group">
         <label for="name">Nome de guerra</label>
@@ -18,11 +23,22 @@
         <input type="text" name="re" id="re" value="" required>
       </div>
       <div class="form-group">
+        <label for="name">Ativo</label>
+        <select class="" name="ativo" id="id_pelotao" required>
+            <option value="1">Ativo</option>
+            <option value="0">Inativo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Foto</label>
+        <input type="file" name="foto" id="foto" value="" required>
+      </div>
+      <div class="form-group">
         <label for="name">Pelotao</label>
         <select class="" name="id_pelotao" id="id_pelotao" required>
           <option value="">Selecione</option>
             @foreach($pelotaos as $pelotao)
-              <option value="{{$pelotao->id}}">{{$pelotao->numeroPelotao}}</option>
+              <option value="{{$pelotao->id}}">{{$pelotao->numeroPelotao}} - {{$pelotao->nomePelotao}}</option>
             @endforeach
         </select>
       </div>

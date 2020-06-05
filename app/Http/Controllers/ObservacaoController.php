@@ -30,14 +30,17 @@ class ObservacaoController extends Controller
   public function store(Request $request){
     $this->objCompanhia->create([
       'descricao'=>$request->descricao,
-      'id_aluno'=>$request->id_aluno
+      'id_aluno'=>$request->id_aluno,
+      'graduacao'=>$request->graduacao,
+      'nome_graduado'=>$request->nome_graduado,
+      're'=>$request->re
     ]);
   }
 
 
   public function edit($id){
     $aluno=$this->objAluno->find($id);
-    $observ=Observacao::select('descricao')
+    $observ=Observacao::select('*')
     ->join('alunos', 'observacaos.id_observacao', '=', 'alunos.id')
     ->where('alunos.id', $id)
     ->get();
@@ -49,7 +52,10 @@ class ObservacaoController extends Controller
   public function update(Request $request, $id){
     $this->objObservacao->create([
       'descricao'=>$request->descricao,
-      'id_observacao'=>$id
+      'id_observacao'=>$id,
+      'graduacao'=>$request->graduacao,
+      'nome_graduado'=>$request->nome_graduado,
+      're'=>$request->re
     ]);
 
     return redirect('observacao/'.$id.'/edit');

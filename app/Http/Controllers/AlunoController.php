@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pelotao;
 use App\Aluno;
+use Illuminate\Support\Facades\Input;
+
+
+use File;
 
 class AlunoController extends Controller
 {
@@ -24,11 +28,12 @@ class AlunoController extends Controller
 
   public function retornaId($id)
   {
+    $pelotao=$this->objPelotao->all();
     $alunos = Pelotao::select('*')
     ->join('alunos', 'pelotaos.id', '=', 'alunos.id_pelotao')
     ->where('alunos.id_pelotao', $id)
     ->get();
-    return view('aluno/home',compact('alunos'));
+    return view('aluno/home',compact('alunos', 'pelotao'));
   }
 
   public function create(){
@@ -37,13 +42,31 @@ class AlunoController extends Controller
   }
 
   public function store(Request $request){
+$foto = $request->foto;
+  $extensao = $foto->getClientOriginalExtension();
+
+    if (Input::file($request->foto)) {
+
+      if ($extensao != 'jpg' && $extensao != 'png') {
+        return back()->with("erro", "Erro ao inserir imagem");
+      }
+    }
       $this->objAluno->create([
         'nome'=>$request->nome,
         'nomeDeGuerra'=>$request->nomeDeGuerra,
         're'=>$request->re,
+        'numero_aluno'=>$request->numero_aluno,
+        'ativo'=>$request->ativo,
         'id_pelotao'=>$request->id_pelotao,
+        'foto'=>$request->re.".".$extensao,
         'dataNasc'=>$request->dataNasc
       ]);
+
+      File::move($foto,public_path()."/imagem-aluno/".$request->re.".".$extensao);
+
+
+
+      return redirect('aluno/home');
   }
   public function edit($id){
   $aluno=$this->objAluno->find($id);

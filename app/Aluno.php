@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     protected $table = 'alunos';
-    protected $fillable=['nome', 'nomeDeGuerra', 're', 'id_pelotao', 'dataNasc'];
+    protected $fillable=['nome', 'nomeDeGuerra', 're', 'id_pelotao', 'dataNasc', 'numero_aluno', 'foto', 'ativo'];
 
     public function relAlunosPel(){
       return $this->hasOne('App\Pelotao', 'id', 'id_pelotao');

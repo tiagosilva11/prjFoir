@@ -14,7 +14,7 @@ class CreatePelotaosTable extends Migration
      public function up()
      {
          Schema::create('pelotaos', function (Blueprint $table) {
-             $table->increments('id');
+             $table->bigIncrements('id');
              $table->string('numeroPelotao', 30);
              $table->string('nomePelotao', 70);
              $table->string('comandante', 70);
@@ -32,6 +32,6 @@ class CreatePelotaosTable extends Migration
       */
      public function down()
      {
-         Schema::dropIfExists('editals');
+         Schema::dropIfExists('pelotaos');
      }
 }

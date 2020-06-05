@@ -3,17 +3,19 @@
 @section('content')
 
 <div class="container">
+  <br>
   <div class="">
     <a href="{{url('edital/create')}}">
-      <button type="" class="btn" name="button">Cadastrar</button>
+      <button type="" class="btn btn-primary" name="button">Cadastrar novo edital</button>
     </a>
   </div>
-
+<br>
 <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Edital</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>

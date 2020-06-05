@@ -13,7 +13,26 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+.foir-textarea{
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+  border: 1px solid black;
+  padding: 20px;
+  word-wrap: break-word;
+  color: #666 !important;
+  box-shadow: inset 0 0 0.25rem #ddd;
+  &:focus {
+    border: 1px solid darken(#ddd, 5%);
+    box-shadow: inset 0 0 0.5rem darken(#ddd, 5%);
 
+}
+.foir-table{
+  border: 1px solid #ddd !important;
+}
+.foir-titulo{
+  font-size: 18px !important;
+}
 body {
   margin: 0;
 }
@@ -8332,4 +8351,3 @@ button.close {
     display: none !important;
   }
 }
-

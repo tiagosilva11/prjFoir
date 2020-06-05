@@ -15,9 +15,14 @@ class CreateObservacaosTable extends Migration
     {
         Schema::create('observacaos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao', 255);
+            $table->text('descricao', 255);
+            $table->string('graduacao', 255);
+            $table->string('RE', 255);
+            $table->string('nome_graduado', 255);
             $table->integer('id_observacao')->unsigned();
             $table->foreign('id_observacao')->references('id')->on('alunos')->onDelete('cascade')->onUpdate('cascade');
+            //$table->integer('id_prof_observacao')->unsigned();
+            //$table->foreign('id_prof_observacao')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

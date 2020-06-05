@@ -16,10 +16,13 @@ class CreateAlunosTable extends Migration
         Schema::create('alunos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 200);
+            $table->integer('numero_aluno');
             $table->string('nomeDeGuerra', 70);
+            $table->string('foto', 70)->nullable();
             $table->string('re', 70);
+            $table->boolean('ativo')->default('1');
             $table->date('dataNasc');
-            $table->integer('id_pelotao')->unsigned();
+            $table->unsignedBigInteger('id_pelotao')->unsigned();
             $table->foreign('id_pelotao')->references('id')->on('pelotaos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();

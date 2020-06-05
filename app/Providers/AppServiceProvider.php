@@ -17,8 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        $showpelotaos = Pelotao::all();
-        View::share(compact('showpelotaos'));
+    //    $showpelotaos = Pelotao::all();
+      //  View::share(compact('showpelotaos'));
 
     }
 

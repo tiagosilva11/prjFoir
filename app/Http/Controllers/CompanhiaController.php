@@ -36,6 +36,7 @@ public function store(Request $request){
     'description'=>$request->description,
     'id_edital'=>$request->id_edital
   ]);
+  return redirect('companhia/home');
 }
 
 public function edit($id){

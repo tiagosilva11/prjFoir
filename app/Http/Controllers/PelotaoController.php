@@ -32,6 +32,7 @@ class PelotaoController extends Controller
         'comandante'=>$request->comandante,
         'id_companhia'=>$request->id_companhia
       ]);
+      return redirect('pelotao/home');
     }
     public function edit($id){
       $pelotao=$this->objPelotao->find($id);
@@ -47,7 +48,7 @@ class PelotaoController extends Controller
         'id_companhia'=>$request->id_companhia
       ]);
 
-      return redirect('home');
+      return redirect('pelotao/home');
     }
 
 
