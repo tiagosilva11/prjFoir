@@ -30,6 +30,19 @@
   max-height: 200px;
   max-width: 200px;
 }
+
+.foir-assinatura{
+  max-width: 100%;
+  max-height: 100px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.observacoes{
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-top: 20px;
+}
 </style>
 <div class="container">
   <div class="col-md">
@@ -37,8 +50,11 @@
       {{ csrf_field() }}
       {{ method_field('PUT')}}
       <div class="col-sm-12 text-center"><h1 class="foir-titulo">FICHA DE OBSERVACAO INDIVIDUAL RESERVADA (FOIR)</h1></div>
+
       <div class="col-sm-2 foir-table text-center">
         <img class="foir-imagem" src={{url("/imagem-aluno/$aluno->foto")}} alt="" />
+
+
       </div>
       <div class="col-sm-1 foir-table text-center">
 
@@ -64,54 +80,48 @@
 
               <textarea type="text" name="descricao" class="foir-textarea" value="" required placeholder="Insira a observação do aluno"></textarea>
 
-      <form class="">
-
+      <form class="" method="post" enctype="multipart/form-data">
 
               <div class="form-group">
-              <select class="form-control" name="graduacao" id="graduacao" required placeholder="Graduação">
-
-                <option value="Soldado">Soldado</option>
-                <option value="Cabo">Cabo</option>
-                <option value="3º Sargento">3º Sargento</option>
-                <option value="2º Sargento">2º Sargento</option>
-                <option value="1º Sargento">1º Sargento</option>
-                <option value="SubTenente">SubTenente</option>
-                <option value="Aspirante">Aspirante</option>
-                <option value="2º Tenente">2º Tenente</option>
-                <option value="1º Tenente">1º Tenente</option>
-                <option value="Capitão">Capitão</option>
-                <option value="Major">Major</option>
-                <option value="Tenente-Coronel">Tenente-Coronel</option>
-                <option value="Coronel">Coronel</option>
-              </select>
+                <input type="text" class="form-control" name="graduacao" value="{{auth()->user()->posto_graduacao}}" required placeholder="Nome" hidden>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" name="nome_graduado" value="" required placeholder="Nome">
+                <input type="text" class="form-control" name="nome_graduado" value="{{auth()->user()->name}}" required placeholder="Nome" hidden>
               </div>
-              <div class="form-group">
-              <input type="text" name="re" value="" class="form-control" required placeholder="RE">
+
+              <input type="text" name="re" class="form-control" required value="{{auth()->user()->re}}" hidden>
             </div>
+            <input type="text" name="assinatura" id="assinatura" value="{{auth()->user()->assinatura}}" hidden>
+            <div class="form-group">
+          </div>
             <div class="form-group">
               <input type="submit" class="btn btn-primary" name="" value="Cadastrar">
             </div>
 
             </form>
 
-          </div>
+
       </form>
-          <form>
-      <div class="">
 
 
       @foreach($observ as $observs)
-      <label for=""> <b>{{$observs->graduacao}}  {{$observs->nome_graduado}}</b> em: {{date( 'd/m/Y' , strtotime($observs->created_at))}}</label>
-      <p class="foir-textarea">{{$observs->descricao}}</p>
-      @endforeach
+      <div class="row observacoes">
+        <div class="col-11">
+          <label for=""> <b>{{$observs->graduacao}}  {{$observs->nome_graduado}}</b> em: {{date( 'd/m/Y' , strtotime($observs->created_at))}}</label>
+          <p class="foir-textarea">{{$observs->descricao}}</p>
+        </div>
+        <div class="col-1 text-center">
+          <img  class="foir-assinatura" src="{{url("/assinaturas/".$observs->assinatura)}}" alt="">
+        </div>
       </div>
+      @endforeach
+
 <div class="editor" id="editor">
-<button type="button" value="Print this page" id="btGerarPDF">Gerar</button>
+<button type="button" value="Print this page" id="print-btn">Gerar</button>
+
 </div>
-</form>
+
+<a href="{{url("$aluno->id/pdf")}}">Download PDF</a>
   </div>
 
   <div class="invisible" id="conteudo">
@@ -141,20 +151,6 @@
 
   </div>
   <script type="text/javascript">
-    var doc = new jsPDF();
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
-
-    $('#btGerarPDF').click(function () {
-        doc.fromHTML($('#conteudo').html(), 15, 15, {
-            'width': 170,
-                'elementHandlers': specialElementHandlers
-        });
-        doc.save('exemplo-pdf.pdf');
-    });
 
   </script>
 

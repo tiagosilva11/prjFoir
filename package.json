@@ -19,6 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "admin-lte": "^3.0.4"
+        "admin-lte": "^3.0.4",
+        "html2canvas": "^1.0.0-rc.5"
     }
 }

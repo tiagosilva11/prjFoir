@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Aluno;
 use App\Observacao;
+use App\User;
 
 class ObservacaoController extends Controller
 {
     private $objAluno;
     private $objObservacao;
+    private $objUser;
 
     public function __construct(){
       $this->objAluno=new Aluno();
       $this->objObservacao=new Observacao();
+      $this->objUser=new User();
     }
 
     public function index()
@@ -50,13 +53,16 @@ class ObservacaoController extends Controller
 
 
   public function update(Request $request, $id){
+
     $this->objObservacao->create([
       'descricao'=>$request->descricao,
       'id_observacao'=>$id,
       'graduacao'=>$request->graduacao,
       'nome_graduado'=>$request->nome_graduado,
-      're'=>$request->re
+      're'=>$request->re,
+      'assinatura'=>$request->assinatura
     ]);
+
 
     return redirect('observacao/'.$id.'/edit');
   }

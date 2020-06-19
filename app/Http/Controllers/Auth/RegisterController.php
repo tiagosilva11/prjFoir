@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Input;
+
+use File;
 
 class RegisterController extends Controller
 {
@@ -27,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -51,6 +54,9 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            're' => 'required|string|max:255|unique:users',
+            'posto_graduacao' => 'required|string|max:255',
+
         ]);
     }
 
@@ -62,10 +68,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      $assinatura = $data['assinatura'];
+      $extensao = $assinatura->getClientOriginalExtension();
+
+      if (Input::file($data['assinatura'])) {
+        if ($extensao != 'jpg' && $extensao != 'png') {
+          return back()->with("erro", "Erro ao inserir imagem");
+        }
+      }
+      File::move($assinatura,public_path()."/assinaturas/".$data['re'].".".$extensao);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            're' => $data['re'],
+            'posto_graduacao' => $data['posto_graduacao'],
+            'assinatura' => $data['re'].".".$extensao,
+
         ]);
+
+
     }
 }

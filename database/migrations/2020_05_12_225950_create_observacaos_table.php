@@ -19,6 +19,7 @@ class CreateObservacaosTable extends Migration
             $table->string('graduacao', 255);
             $table->string('RE', 255);
             $table->string('nome_graduado', 255);
+            $table->string('assinatura', 70)->nullable();
             $table->integer('id_observacao')->unsigned();
             $table->foreign('id_observacao')->references('id')->on('alunos')->onDelete('cascade')->onUpdate('cascade');
             //$table->integer('id_prof_observacao')->unsigned();

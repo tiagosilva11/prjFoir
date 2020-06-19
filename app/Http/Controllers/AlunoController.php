@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Pelotao;
 use App\Aluno;
 use Illuminate\Support\Facades\Input;
+use App\Observacao;
+use PDF;
 
 
 use File;
@@ -42,25 +44,24 @@ class AlunoController extends Controller
   }
 
   public function store(Request $request){
-$foto = $request->foto;
-  $extensao = $foto->getClientOriginalExtension();
+    $foto = $request->foto;
+    $extensao = $foto->getClientOriginalExtension();
 
     if (Input::file($request->foto)) {
-
       if ($extensao != 'jpg' && $extensao != 'png') {
         return back()->with("erro", "Erro ao inserir imagem");
       }
     }
-      $this->objAluno->create([
-        'nome'=>$request->nome,
-        'nomeDeGuerra'=>$request->nomeDeGuerra,
-        're'=>$request->re,
-        'numero_aluno'=>$request->numero_aluno,
-        'ativo'=>$request->ativo,
-        'id_pelotao'=>$request->id_pelotao,
-        'foto'=>$request->re.".".$extensao,
-        'dataNasc'=>$request->dataNasc
-      ]);
+    $this->objAluno->create([
+      'nome'=>$request->nome,
+      'nomeDeGuerra'=>$request->nomeDeGuerra,
+      're'=>$request->re,
+      'numero_aluno'=>$request->numero_aluno,
+      'ativo'=>$request->ativo,
+      'id_pelotao'=>$request->id_pelotao,
+      'foto'=>$request->re.".".$extensao,
+      'dataNasc'=>$request->dataNasc
+    ]);
 
       File::move($foto,public_path()."/imagem-aluno/".$request->re.".".$extensao);
 

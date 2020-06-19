@@ -3,11 +3,13 @@
 @section('content')
 
 <div class="container">
+  @if(checkPermission(['admin']))
   <div class="">
     <a href="{{url('aluno/create')}}">
       <button type="" class="btn btn-primary" name="button">Cadastrar</button>
     </a>
   </div>
+  @endif
 <br>
 
 <table class="table table-hover">
