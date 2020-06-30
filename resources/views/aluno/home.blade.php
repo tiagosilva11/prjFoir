@@ -33,6 +33,7 @@
       $pelotaos=$aluno->find($aluno->id)->relAlunosPel;
       @endphp
     @endif
+
     <tr>
       <th scope="row">{{$aluno->numero_aluno}}</th>
       <th scope="row">{{$aluno->nome}}</th>

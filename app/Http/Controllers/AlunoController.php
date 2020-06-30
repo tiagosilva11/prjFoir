@@ -69,12 +69,12 @@ class AlunoController extends Controller
 
       return redirect('aluno/home');
   }
-  public function edit($id){
-  $aluno=$this->objAluno->find($id);
-  $pelotao=$this->objPelotao->all();
+    public function edit($id){
+    $aluno=$this->objAluno->find($id);
+    $pelotaos=$this->objPelotao->all();
 
-  return view('aluno/edit', compact('aluno', 'pelotao'));
-  }
+    return view('aluno/edit', compact('aluno', 'pelotaos'));
+    }
   public function update(Request $request, $id){
   $this->objAluno->where(['id'=>$id])->update([
     'nome'=>$request->nome,

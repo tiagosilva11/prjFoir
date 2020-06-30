@@ -28,7 +28,7 @@
 }
 .foir-imagem{
   max-height: 200px;
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .foir-assinatura{
@@ -61,10 +61,10 @@
         <label for="name" class="foir-label">Nº {{$aluno->numero_aluno}}</label>
       </div>
 
-      <div class="col-sm-2 foir-table">
+      <div class="col-sm-3 foir-table">
         <label for="name" class="foir-label">Graduação: Sd PM 2ª Cl</label>
       </div>
-      <div class="col-sm-7 foir-table" >
+      <div class="col-sm-6 foir-table" >
         <label for="name" class="foir-label">Nome: {{$aluno->nome}}</label>
       </div>
       <div class="col-sm-7 foir-table-down">
@@ -103,7 +103,6 @@
 
       </form>
 
-
       @foreach($observ as $observs)
       <div class="row observacoes">
         <div class="col-11">
@@ -116,40 +115,9 @@
       </div>
       @endforeach
 
-<div class="editor" id="editor">
-<button type="button" value="Print this page" id="print-btn">Gerar</button>
-
-</div>
-
-<a href="{{url("$aluno->id/pdf")}}">Download PDF</a>
+<a href="{{url("$aluno->id/pdf")}}" target="_blank">Download PDF</a>
   </div>
 
-  <div class="invisible" id="conteudo">
-    <div class="col-sm-12 text-center"><h1 class="foir-titulo">FICHA DE OBSERVACAO INDIVIDUAL RESERVADA (FOIR)</h1></div>
-    <label for="">{{$aluno->foto}}</label>
-    <div class="col-sm-1 foir-table text-center">
-      <label for="name" class="foir-label">Nº {{$aluno->numero_aluno}}</label>
-    </div>
-    <div class="col-sm-3 foir-table">
-      <label for="name" class="foir-label">Graduação: Sd PM 2ª Cl</label>
-    </div>
-    <div class="col-sm-8 foir-table" >
-      <label for="name" class="foir-label">Nome: {{$aluno->nome}}</label>
-    </div>
-    <div class="col-sm-7 foir-table-down">
-      <label for="name" class="foir-label">Nome de Guerra: <b>{{$aluno->nomeDeGuerra}}</b></label>
-    </div>
-    <div class="col-sm-5 foir-table foir-table-down">
-
-      <label for="name" class="foir-label">RE: {{$aluno->re}}</label>
-    </div>
-    <div class="col-sm-12 text-center foir-titulo">
-        <label for="" class="text-center">Observações</label>
-    </div>
-
-            <textarea type="text" name="descricao" class="foir-textarea" value="" required placeholder="Insira a observação do aluno"></textarea>
-
-  </div>
   <script type="text/javascript">
 
   </script>

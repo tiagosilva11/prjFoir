@@ -1,20 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="panel-heading text-center">Registrar Usuario</div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                <div class="">
+                    <form class="" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
 
                         <div class="form-group{{ $errors->has('re') ? ' has-error' : '' }}">
-                            <label for="re" class="col-md-4 control-label">RE</label>
-                            <div class="col-md-6">
+                            <label for="re" class="">RE</label>
+                            <div class="">
                                 <input id="re" type="text" class="form-control" name="re" value="{{ old('re') }}" required autofocus>
                                 @if ($errors->has('re'))
                                     <span class="help-block">
@@ -24,9 +25,9 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('posto_graduacao') ? ' has-error' : '' }}">
-                            <label for="posto_graduacao" class="col-md-4 control-label">Posto ou graduacao</label>
-                            <div class="col-md-6">
-                              <select class="" name="posto_graduacao" id="posto_graduacao">
+                            <label for="posto_graduacao" class="">Posto ou graduacao</label>
+                            <div class="">
+                              <select class="form-control" name="posto_graduacao" id="posto_graduacao">
                                   <option value="SD">Soldado</option>
                                   <option value="CB">Cabo</option>
                                   <option value="3º SGT">3º Sargento</option>
@@ -52,8 +53,8 @@
 
 
                         <div class="form-group{{ $errors->has('assinatura') ? ' has-error' : '' }}">
-                            <label for="assinatura" class="col-md-4 control-label">assinatura</label>
-                            <div class="col-md-6">
+                            <label for="assinatura" class="">Assinatura</label>
+                            <div class="">
                                 <input id="assinatura" type="file" class="form-control" name="assinatura" value="{{ old('assinatura') }}" required autofocus>
                                 @if ($errors->has('assinatura'))
                                     <span class="help-block">
@@ -63,15 +64,9 @@
                             </div>
                         </div>
 
-
-
-
-
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nome de guerra</label>
-
-                            <div class="col-md-6">
+                            <label for="name" class="">Nome de guerra</label>
+                            <div class="">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -83,9 +78,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="control-label">E-Mail</label>
 
-                            <div class="col-md-6">
+                            <div class="">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -97,9 +92,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class=" control-label">Senha</label>
 
-                            <div class="col-md-6">
+                            <div class="">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -111,9 +106,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirmar senha</label>
+                            <div class="">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
@@ -121,7 +115,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Registrar
                                 </button>
                             </div>
                         </div>

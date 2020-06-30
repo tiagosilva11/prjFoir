@@ -53,17 +53,18 @@
 }
 }
 </style>
-<div class="">
+@foreach($observ as $aluno)
+<div class="" style="page-break-after:always">
   <div class="col-sm-12 text-center"><h1 class="foir-titulo">FICHA DE OBSERVACAO INDIVIDUAL RESERVADA (FOIR)</h1></div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-4">
       <img class="foir-imagem" src={{url("/imagem-aluno/$aluno->foto")}} alt="" />
     </div>
-    <div class="col-9">
+    <div class="col-8">
     <div class="col-3">
       <label for="name" class="foir-label">Nº {{$aluno->numero_aluno}}</label>
     </div>
-    <div class="col-12">
+    <div class="col-5">
       <label for="name" class="foir-label">RE: {{$aluno->re}}</label>
     </div>
     <div class="col-12">
@@ -77,27 +78,18 @@
     </div>
     </div>
   </div>
-  <br>
-  <br>
-<div class="col-sm-12 text-center">
-    <label for="" class="text-center">Observações</label>
-</div>
-<br>
-@foreach($observ as $observs)
+
 <div class="row observacoes">
-  <div class="col-9">
-    <label for=""> <b>{{$observs->graduacao}}  {{$observs->nome_graduado}}</b> em: {{date( 'd/m/Y' , strtotime($observs->created_at))}}</label>
-    <p class="foir-textarea">{{$observs->descricao}}</p>
+  <div class="col-11">
+
+    <p class="foir-textarea">{{$aluno->descricao}}</p>
   </div>
-  <div class="col-3 text-center">
-    <img  class="foir-assinatura" src="{{url("/assinaturas/".$observs->assinatura)}}" alt="">
+  <div class="col-1 text-center">
+
   </div>
 </div>
-@endforeach
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-  window.print();
-});
-</script>
+  @endforeach
+
+
 @endsection

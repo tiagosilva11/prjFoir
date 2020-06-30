@@ -77,18 +77,8 @@
           <a class="dropdown-item" href="{{url("aluno/home")}}">Ver/Criar Alunos</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Aluno
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{url("login")}}">Ver/Criar Alunos</a>
-        </div>
-      </li>
     </ul>
 
-
-<a href="{{ route('register') }}">Registrar</a>
   @endif
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Buscar aluno" aria-label="Search">

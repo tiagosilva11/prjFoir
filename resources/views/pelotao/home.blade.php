@@ -23,6 +23,7 @@
       @php
         $companhia=$pelotao->find($pelotao->id)->relPelotaos;
       @endphp
+
     <tr>
       <th scope="row">{{$pelotao->numeroPelotao}}</th>
       <th scope="row">{{$pelotao->nomePelotao}}</th>
@@ -32,8 +33,8 @@
         <a href="{{url("pelotao/$pelotao->id/edit")}}">
           <button class="btn btn-primary">Editar</button>
         </a>
-        <a href="">
-          <button class="btn btn-danger">Deletar</button>
+        <a href="{{url("$pelotao->id/pelotao/pdfPelotao")}}">
+          <button class="btn btn-danger">Imprimir</button>
         </a>
       </th>
     </tr>

@@ -36,6 +36,8 @@ Route::get('/aluno/{id}/retornaId', 'AlunoController@retornaId')->name('home');
 
 Route::get('/{id}/pdf', 'PDFController@index');
 
+Route::get('/{id}/pelotao/pdfPelotao', 'PDFController@pelotaos');
+
 Route::get('/observacao/{id}/edit', 'ObservacaoController@edit')->name('edit');
 Route::get('/observacao/create', 'ObservacaoController@create')->name('create');
 Route::get('/observacao/home', 'ObservacaoController@index')->name('home');
