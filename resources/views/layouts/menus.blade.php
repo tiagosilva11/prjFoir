@@ -78,7 +78,7 @@
         </div>
       </li>
     </ul>
-
+    <a href="{{ route('register') }}">Registrar</a>
   @endif
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Buscar aluno" aria-label="Search">

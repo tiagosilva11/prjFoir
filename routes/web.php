@@ -21,6 +21,8 @@ Route::get('/companhia/home', 'CompanhiaController@index')->name('home');
 Route::get('/companhia/create', 'CompanhiaController@create')->name('create');
 Route::get('/companhia/{id}/edit', 'CompanhiaController@edit')->name('edit');
 
+//Route::get('/register', 'Auth/RegisterController@create')->name('create');
+
 Route::get('/edital/home', 'EditalController@index')->name('home');
 Route::get('/edital/create', 'EditalController@create')->name('create');
 Route::get('/edital/{id}/edit', 'EditalController@edit')->name('edit');
