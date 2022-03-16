@@ -27,6 +27,9 @@ class CompanhiaController extends Controller
 
 public function create(){
   $editais=$this->objEdital->all();
+  
+  
+  
   return view('companhia/create',compact('editais'));
 }
 

@@ -11,6 +11,9 @@ class EditalController extends Controller
 
   public function __construct(){
     $this->objEdital=new Edital();
+	
+	
+	
 }
 
 public function index()
